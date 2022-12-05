@@ -1,4 +1,6 @@
+{% extends "base.html" %}
 {% load static %}
+{% block main %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -714,6 +716,6 @@
         <script src="static/assets/demo/chart-bar-demo.js"></script>
         <script src="/static/assets/demo/chart-pie-demo.js' "></script>
         {% include 'mychart.html' %}
-
+    {% endblock %}
     </body>
 </html>
