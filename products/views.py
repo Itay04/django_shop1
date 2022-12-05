@@ -58,7 +58,7 @@ def home(request):
      context = {
         'product_list': product_list,
     }
-     return render(request,'index.html',context)
+     return render(request,'product.html',context)
 
 def charts(request):
     big = products.objects.filter(type=products.ProductType.BIG_ITEM).count()
