@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'django-insecure-z@$dj06a)z4yg(w8uxm#$0uy=d1t3g(5fhqyzys^2*r_cpb&-*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
 
 # Application definition
@@ -39,10 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'products',
+    'whitenoise.runserver_nostatic',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -132,10 +134,13 @@ STATICFILES_DIRS = [
 # STATIC_ROOT = BASE_DIR ,'/staticfiles'
 MEDIA_ROOT = os.path.join(BASE_DIR, '/static/images')
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_STORAGE = "whitenoise.storage.CompreseedStaticFilesStorage"
 
 LOGIN_REDIRECT_URL = "/"
 
 LOGOUT_REDIRECT_URL = "login"
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
