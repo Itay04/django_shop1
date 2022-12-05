@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+<div class="row row-cols-1 row-cols-md-5 g-4">
+        {% for product in product_list %}    
+        <div class="col">
+          <div class="card">
+            <img style="width:150px;height:150px" src="{% static 'images/' %}{{ product.image }}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{ product.name }}</h5>
+              <p class="card-text"> {{ product.author }} = {{ product.year_published }}</p>
+              <a href="/products/deleteproduct?id={{ product.id }}" class="btn btn-danger">DELETE</a>
+              <a href="{% url 'products:buy_product' %}" class="btn btn-danger">BUY</a>
+
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock%}

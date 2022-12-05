@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="row row-cols-1 row-cols-md-5 g-4">
+        {% for product in product %}    
+        <div class="col">
+          <div class="card">
+            <img style="width:150px;height:150px" src="{% static 'images/' %}{{ product.image }}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{ product.name }}</h5>
+              <p class="card-text"> {{ product.author }}  {{ product.year_published }}</p>
+              <a href="/products/deleteproduct?id={{ product.id }}" class="btn btn-danger">DELETE</a>
+              <a href="{% url 'products:buy_product' %}" class="btn btn-danger">BUY</a>
+
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+</body>
+</html>
